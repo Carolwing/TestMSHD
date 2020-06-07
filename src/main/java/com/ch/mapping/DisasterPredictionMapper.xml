@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ch.mapping.DisasterPredictionMapper">
+    <sql id="BASE_TABLE">
+        disasterprediction
+    </sql>
+
+    <sql id="BASE_COLUMN">
+        idDisasterPrediction,disasterID,disasterDate,location,disasterType,longitude,latitude,depth,maginitude,intensity,note,reportingUnit
+    </sql>
+
+    <insert id="insert" parameterType="com.ch.model.DisasterPrediction">
+        insert into
+        <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            disasterID,disasterDate,location,disasterType,longitude,latitude,depth,maginitude,intensity,note,reportingUnit
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            #{disasterID,jdbcType=CHAR},#{disasterDate,jdbcType=VARCHAR},#{location,jdbcType=VARCHAR},
+            #{disasterType,jdbcType=VARCHAR},#{longitude,jdbcType=FLOAT},#{latitude,jdbcType=FLOAT},
+            #{depth,jdbcType=FLOAT},#{maginitude,jdbcType=FLOAT},#{intensity,jdbcType=VARCHAR},
+            #{note,jdbcType=VARCHAR},#{reportingUnit,jdbcType=VARCHAR}
+        </trim>
+    </insert>
+</mapper>

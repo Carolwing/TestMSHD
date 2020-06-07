@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ch.mapping.TrafficDisasterMapper">
+    <sql id="BASE_TABLE">
+        trafficdisaster
+    </sql>
+
+    <sql id="BASE_COLUMN">
+        idTrafficdisaster,disasterID,disasterDate,location,disasterType,grade,note,reportingUnit
+    </sql>
+
+    <insert id="insert" parameterType="com.ch.model.TrafficDisaster">
+        insert into
+        <include refid="BASE_TABLE"/>
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            disasterID,disasterDate,location,disasterType,grade,note,reportingUnit
+        </trim>
+        <trim prefix="VALUES(" suffix=")" suffixOverrides=",">
+            #{disasterID,jdbcType=CHAR},#{disasterDate,jdbcType=VARCHAR},#{location,jdbcType=VARCHAR},
+            #{disasterType,jdbcType=VARCHAR},#{grade,jdbcType=VARCHAR},#{note,jdbcType=VARCHAR},
+            #{reportingUnit,jdbcType=VARCHAR}
+        </trim>
+    </insert>
+    <!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">&ndash;&gt;-->
+    <!--      select-->
+    <!--      <include refid="Base_Column_List" />-->
+    <!--      ,-->
+    <!--      <include refid="Blob_Column_List" />-->
+    <!--      from commdisaster-->
+    <!--      where idCommDisaster = #{idCommDisaster,jdbcType=INTEGER}-->
+    <!--    </select>-->
+    <!--  <select id="list" resultType="com.ch.model.CommDisaster">-->
+    <!--        select * from commdisaster-->
+    <!--    </select>-->
+    <!--  <update id="update" parameterType="com.ch.model.CommDisaster">-->
+    <!--    update-->
+    <!--    <include refid="BASE_TABLE"/>-->
+    <!--    set ID = #{ID}, disasterDate = #{disasterDate}, location = #{location}, disasterType = #{disasterType}, grade = #{grade},-->
+    <!--    note = #{note}, reportingUnit = #{reportingUnit}, picture = #{picture}-->
+    <!--    where idCommDisaster = #{idCommDisaster}-->
+    <!--  </update>-->
+    <!--  <delete id="delete" parameterType="com.ch.model.CommDisaster">-->
+    <!--    delete-->
+    <!--    from-->
+    <!--    <include refid="BASE_TABLE"/>-->
+    <!--    where idCommDisaster = #{idCommDisaster}-->
+    <!--  </delete>-->
+    <!--resultType="Bookadmin"-->
+    <!--  <resultMap id="BaseResultMap" type="com.ch.model.CommDisaster">-->
+    <!--    <constructor>-->
+    <!--      <idArg column="idCommDisaster" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+    <!--      <arg column="ID" javaType="java.lang.String" jdbcType="CHAR" />-->
+    <!--      <arg column="date" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="location" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="type" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="grade" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="note" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="reporting unit" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--    </constructor>-->
+    <!--  </resultMap>-->
+    <!--  <resultMap id="ResultMapWithBLOBs" type="com.ch.model.CommDisaster">-->
+    <!--    <constructor>-->
+    <!--      <idArg column="idCommDisaster" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+    <!--      <arg column="ID" javaType="java.lang.String" jdbcType="CHAR" />-->
+    <!--      <arg column="date" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="location" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="type" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="grade" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="note" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="reporting unit" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="picture" javaType="_byte[]" jdbcType="LONGVARBINARY" />-->
+    <!--    </constructor>-->
+    <!--  </resultMap>-->
+    <!--  <sql id="Base_Column_List">-->
+    <!--    idCommDisaster, ID, date, location, type, grade, note, "reporting unit"-->
+    <!--  </sql>-->
+    <!--  <sql id="Blob_Column_List">-->
+    <!--    picture-->
+    <!--  </sql>-->
+    <!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">-->
+    <!--    select -->
+    <!--    <include refid="Base_Column_List" />-->
+    <!--    ,-->
+    <!--    <include refid="Blob_Column_List" />-->
+    <!--    from commdisaster-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </select>-->
+    <!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+    <!--    delete from commdisaster-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </delete>-->
+    <!--  <insert id="insert" parameterType="com.ch.model.CommDisaster">-->
+    <!--    insert into commdisaster (ID, date,-->
+    <!--      location, type, grade, -->
+    <!--      note, "reporting unit", picture-->
+    <!--      )-->
+    <!--    values (#{id,jdbcType=CHAR}, #{date,jdbcType=VARCHAR},-->
+    <!--      #{location,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, -->
+    <!--      #{note,jdbcType=VARCHAR}, #{reportingUnit,jdbcType=VARCHAR}, #{picture,jdbcType=LONGVARBINARY}-->
+    <!--      )-->
+    <!--  </insert>-->
+    <!--  <insert id="insertSelective" parameterType="com.ch.model.CommDisaster">-->
+    <!--    insert into commdisaster-->
+    <!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+    <!--      <if test="idcommdisaster != null">-->
+    <!--        idCommDisaster,-->
+    <!--      </if>-->
+    <!--      <if test="id != null">-->
+    <!--        ID,-->
+    <!--      </if>-->
+    <!--      <if test="date != null">-->
+    <!--        date,-->
+    <!--      </if>-->
+    <!--      <if test="location != null">-->
+    <!--        location,-->
+    <!--      </if>-->
+    <!--      <if test="type != null">-->
+    <!--        type,-->
+    <!--      </if>-->
+    <!--      <if test="grade != null">-->
+    <!--        grade,-->
+    <!--      </if>-->
+    <!--      <if test="note != null">-->
+    <!--        note,-->
+    <!--      </if>-->
+    <!--      <if test="reportingUnit != null">-->
+    <!--        "reporting unit",-->
+    <!--      </if>-->
+    <!--      <if test="picture != null">-->
+    <!--        picture,-->
+    <!--      </if>-->
+    <!--    </trim>-->
+    <!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+    <!--      <if test="idcommdisaster != null">-->
+    <!--        #{idcommdisaster,jdbcType=INTEGER},-->
+    <!--      </if>-->
+    <!--      <if test="id != null">-->
+    <!--        #{id,jdbcType=CHAR},-->
+    <!--      </if>-->
+    <!--      <if test="date != null">-->
+    <!--        #{date,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="location != null">-->
+    <!--        #{location,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="type != null">-->
+    <!--        #{type,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="grade != null">-->
+    <!--        #{grade,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="note != null">-->
+    <!--        #{note,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="reportingUnit != null">-->
+    <!--        #{reportingUnit,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="picture != null">-->
+    <!--        #{picture,jdbcType=LONGVARBINARY},-->
+    <!--      </if>-->
+    <!--    </trim>-->
+    <!--  </insert>-->
+    <!--  <update id="updateByPrimaryKeySelective" parameterType="com.ch.model.CommDisaster">-->
+    <!--    update commdisaster-->
+    <!--    <set>-->
+    <!--      <if test="id != null">-->
+    <!--        ID = #{id,jdbcType=CHAR},-->
+    <!--      </if>-->
+    <!--      <if test="date != null">-->
+    <!--        date = #{date,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="location != null">-->
+    <!--        location = #{location,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="type != null">-->
+    <!--        type = #{type,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="grade != null">-->
+    <!--        grade = #{grade,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="note != null">-->
+    <!--        note = #{note,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="reportingUnit != null">-->
+    <!--        "reporting unit" = #{reportingUnit,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="picture != null">-->
+    <!--        picture = #{picture,jdbcType=LONGVARBINARY},-->
+    <!--      </if>-->
+    <!--    </set>-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </update>-->
+    <!--  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ch.model.CommDisaster">-->
+    <!--    update commdisaster-->
+    <!--    set ID = #{id,jdbcType=CHAR},-->
+    <!--      date = #{date,jdbcType=VARCHAR},-->
+    <!--      location = #{location,jdbcType=VARCHAR},-->
+    <!--      type = #{type,jdbcType=VARCHAR},-->
+    <!--      grade = #{grade,jdbcType=VARCHAR},-->
+    <!--      note = #{note,jdbcType=VARCHAR},-->
+    <!--      "reporting unit" = #{reportingUnit,jdbcType=VARCHAR},-->
+    <!--      picture = #{picture,jdbcType=LONGVARBINARY}-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </update>-->
+    <!--  <update id="updateByPrimaryKey" parameterType="com.ch.model.CommDisaster">-->
+    <!--    update commdisaster-->
+    <!--    set ID = #{id,jdbcType=CHAR},-->
+    <!--      date = #{date,jdbcType=VARCHAR},-->
+    <!--      location = #{location,jdbcType=VARCHAR},-->
+    <!--      type = #{type,jdbcType=VARCHAR},-->
+    <!--      grade = #{grade,jdbcType=VARCHAR},-->
+    <!--      note = #{note,jdbcType=VARCHAR},-->
+    <!--      "reporting unit" = #{reportingUnit,jdbcType=VARCHAR}-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </update>-->
+    <!--  <resultMap id="BaseResultMap" type="com.ch.model.CommDisaster">-->
+    <!--    <constructor>-->
+    <!--      <idArg column="idCommDisaster" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+    <!--      <arg column="ID" javaType="java.lang.String" jdbcType="CHAR" />-->
+    <!--      <arg column="date" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="location" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="type" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="grade" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="note" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="reporting unit" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--    </constructor>-->
+    <!--  </resultMap>-->
+    <!--  <resultMap id="ResultMapWithBLOBs" type="com.ch.model.CommDisaster">-->
+    <!--    <constructor>-->
+    <!--      <idArg column="idCommDisaster" javaType="java.lang.Integer" jdbcType="INTEGER" />-->
+    <!--      <arg column="ID" javaType="java.lang.String" jdbcType="CHAR" />-->
+    <!--      <arg column="date" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="location" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="type" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="grade" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="note" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="reporting unit" javaType="java.lang.String" jdbcType="VARCHAR" />-->
+    <!--      <arg column="picture" javaType="_byte[]" jdbcType="LONGVARBINARY" />-->
+    <!--    </constructor>-->
+    <!--  </resultMap>-->
+    <!--  <sql id="Base_Column_List">-->
+    <!--    idCommDisaster, ID, date, location, type, grade, note, "reporting unit"-->
+    <!--  </sql>-->
+    <!--  <sql id="Blob_Column_List">-->
+    <!--    picture-->
+    <!--  </sql>-->
+    <!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">-->
+    <!--    select -->
+    <!--    <include refid="Base_Column_List" />-->
+    <!--    ,-->
+    <!--    <include refid="Blob_Column_List" />-->
+    <!--    from commdisaster-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </select>-->
+    <!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+    <!--    delete from commdisaster-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </delete>-->
+    <!--  <insert id="insert" parameterType="com.ch.model.CommDisaster">-->
+    <!--    insert into commdisaster (ID, date,-->
+    <!--      location, type, grade, -->
+    <!--      note, "reporting unit", picture-->
+    <!--      )-->
+    <!--    values (#{id,jdbcType=CHAR}, #{date,jdbcType=VARCHAR},-->
+    <!--      #{location,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, -->
+    <!--      #{note,jdbcType=VARCHAR}, #{reportingUnit,jdbcType=VARCHAR}, #{picture,jdbcType=LONGVARBINARY}-->
+    <!--      )-->
+    <!--  </insert>-->
+    <!--  <insert id="insertSelective" parameterType="com.ch.model.CommDisaster">-->
+    <!--    insert into commdisaster-->
+    <!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+    <!--      <if test="idcommdisaster != null">-->
+    <!--        idCommDisaster,-->
+    <!--      </if>-->
+    <!--      <if test="id != null">-->
+    <!--        ID,-->
+    <!--      </if>-->
+    <!--      <if test="date != null">-->
+    <!--        date,-->
+    <!--      </if>-->
+    <!--      <if test="location != null">-->
+    <!--        location,-->
+    <!--      </if>-->
+    <!--      <if test="type != null">-->
+    <!--        type,-->
+    <!--      </if>-->
+    <!--      <if test="grade != null">-->
+    <!--        grade,-->
+    <!--      </if>-->
+    <!--      <if test="note != null">-->
+    <!--        note,-->
+    <!--      </if>-->
+    <!--      <if test="reportingUnit != null">-->
+    <!--        "reporting unit",-->
+    <!--      </if>-->
+    <!--      <if test="picture != null">-->
+    <!--        picture,-->
+    <!--      </if>-->
+    <!--    </trim>-->
+    <!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+    <!--      <if test="idcommdisaster != null">-->
+    <!--        #{idcommdisaster,jdbcType=INTEGER},-->
+    <!--      </if>-->
+    <!--      <if test="id != null">-->
+    <!--        #{id,jdbcType=CHAR},-->
+    <!--      </if>-->
+    <!--      <if test="date != null">-->
+    <!--        #{date,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="location != null">-->
+    <!--        #{location,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="type != null">-->
+    <!--        #{type,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="grade != null">-->
+    <!--        #{grade,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="note != null">-->
+    <!--        #{note,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="reportingUnit != null">-->
+    <!--        #{reportingUnit,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="picture != null">-->
+    <!--        #{picture,jdbcType=LONGVARBINARY},-->
+    <!--      </if>-->
+    <!--    </trim>-->
+    <!--  </insert>-->
+    <!--  <update id="updateByPrimaryKeySelective" parameterType="com.ch.model.CommDisaster">-->
+    <!--    update commdisaster-->
+    <!--    <set>-->
+    <!--      <if test="id != null">-->
+    <!--        ID = #{id,jdbcType=CHAR},-->
+    <!--      </if>-->
+    <!--      <if test="date != null">-->
+    <!--        date = #{date,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="location != null">-->
+    <!--        location = #{location,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="type != null">-->
+    <!--        type = #{type,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="grade != null">-->
+    <!--        grade = #{grade,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="note != null">-->
+    <!--        note = #{note,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="reportingUnit != null">-->
+    <!--        "reporting unit" = #{reportingUnit,jdbcType=VARCHAR},-->
+    <!--      </if>-->
+    <!--      <if test="picture != null">-->
+    <!--        picture = #{picture,jdbcType=LONGVARBINARY},-->
+    <!--      </if>-->
+    <!--    </set>-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </update>-->
+    <!--  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ch.model.CommDisaster">-->
+    <!--    update commdisaster-->
+    <!--    set ID = #{id,jdbcType=CHAR},-->
+    <!--      date = #{date,jdbcType=VARCHAR},-->
+    <!--      location = #{location,jdbcType=VARCHAR},-->
+    <!--      type = #{type,jdbcType=VARCHAR},-->
+    <!--      grade = #{grade,jdbcType=VARCHAR},-->
+    <!--      note = #{note,jdbcType=VARCHAR},-->
+    <!--      "reporting unit" = #{reportingUnit,jdbcType=VARCHAR},-->
+    <!--      picture = #{picture,jdbcType=LONGVARBINARY}-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </update>-->
+    <!--  <update id="updateByPrimaryKey" parameterType="com.ch.model.CommDisaster">-->
+    <!--    update commdisaster-->
+    <!--    set ID = #{id,jdbcType=CHAR},-->
+    <!--      date = #{date,jdbcType=VARCHAR},-->
+    <!--      location = #{location,jdbcType=VARCHAR},-->
+    <!--      type = #{type,jdbcType=VARCHAR},-->
+    <!--      grade = #{grade,jdbcType=VARCHAR},-->
+    <!--      note = #{note,jdbcType=VARCHAR},-->
+    <!--      "reporting unit" = #{reportingUnit,jdbcType=VARCHAR}-->
+    <!--    where idCommDisaster = #{idcommdisaster,jdbcType=INTEGER}-->
+    <!--  </update>-->
+</mapper>
