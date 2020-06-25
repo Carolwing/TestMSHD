@@ -35,6 +35,9 @@ public class DisasterPredictionController {
             if (check(disasterPrediction)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(disasterPrediction.getDisasterID());
+                    disasterPrediction.setLocation(cm.getLocation_name());
+                    disasterPrediction.setDisasterID(cm.getKind_name());
                     result = disasterPredictionService.insert(disasterPrediction);
                 } catch (Exception e) {
                     System.out.println(e.getStackTrace());

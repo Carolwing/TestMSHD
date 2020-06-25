@@ -22,7 +22,7 @@ public class SendDB {
     @Autowired
     private BackupDatabaseManager backUpDataBaseManager;
 
-    private static final Logger log = LoggerFactory.getLogger(com.ch.controller.SendDB.class);
+    private static final Logger log = LoggerFactory.getLogger(SendDB.class);
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmssSS");
 
     @RequestMapping(value = "/backupDB", method = RequestMethod.POST)
@@ -39,7 +39,7 @@ public class SendDB {
         OutputStream out = s.getOutputStream();
         // 获得输入流
         //备份的文件路径
-        FileInputStream fis = new FileInputStream("D:\\data.sql");
+        FileInputStream fis = new FileInputStream("C:\\data_send.sql");
         // 发送文件信息
         byte[] buf = new byte[1024*1024];
         int len = 0;

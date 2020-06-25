@@ -11,10 +11,10 @@ import java.io.IOException;
 
 @Service
 public class BackupDatabaseManager {
-    private static final Logger log = LoggerFactory.getLogger(com.ch.service.BackupDatabaseManager.class);
-    @Value("${spring.datasource.driver-class-name}")
+    private static final Logger log = LoggerFactory.getLogger(BackupDatabaseManager.class);
+//    @Value("${spring.datasource.driver-class-name}")
     private String driverClassName;
-    @Value("${spring.datasource.url}")
+//    @Value("${spring.datasource.url}")
     private String url;
 
     /**     * 获取数据库名     */
@@ -43,10 +43,10 @@ public class BackupDatabaseManager {
         sb.append("nbuser ");
         sb.append(" disaster ");
         //备份数据存储位置，需要在mysql所在的盘
-        sb.append(">D:\\data_send.sql");
+        sb.append(">C:\\data_send.sql");
 
         //mysql的exe位置
-        File dir = new File("D:\\MySQL5.6\\bin\\");
+        File dir = new File("C:\\Program Files\\mysql_install\\mysql-8.0.13-winx64\\bin");
 
         try {
             Process exec = Runtime.getRuntime().exec("cmd /c "+sb.toString(),null,dir);

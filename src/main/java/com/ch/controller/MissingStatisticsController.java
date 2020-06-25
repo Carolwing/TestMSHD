@@ -39,6 +39,9 @@ public class MissingStatisticsController {
             if (check(missingStatistics)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(missingStatistics.getDisasterID());
+                    missingStatistics.setLocation(cm.getLocation_name());
+                    missingStatistics.setDisasterID(cm.getKind_name());
                     result = missingStatisticsService.insert(missingStatistics);
                 } catch (Exception e) {
                     System.out.println(e.getStackTrace());

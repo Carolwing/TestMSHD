@@ -48,7 +48,7 @@
 <br />
 
 
-<input type="button" name="jump" value="查看数据" onclick="window.location.href='http://114.116.87.15:8080/table_war/testCommD/index'" style="width:250px; height:50px; background-color:#E9F0FB;">
+<input type="button" name="jump" value="查看数据" onclick="window.location.href='http://114.116.87.15:8080/mshd/coll'" style="width:250px; height:50px; background-color:#E9F0FB;">
 </center>
 </body>
 </html>

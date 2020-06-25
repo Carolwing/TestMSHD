@@ -35,6 +35,10 @@ public class CollapseRecordController {
             if (check(collapseRecord)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(collapseRecord.getDisasterID());
+                    if (!cm.getLocation_name().equals(""))
+                        collapseRecord.setLocation(cm.getLocation_name());
+                    collapseRecord.setNote(cm.getKind_name());
                     result = collapseRecordService.insert(collapseRecord);
                 } catch (Exception e) {
                     System.out.println(e.getStackTrace());

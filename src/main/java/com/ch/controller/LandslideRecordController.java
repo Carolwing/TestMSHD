@@ -35,6 +35,9 @@ public class LandslideRecordController {
             if (check(landslideRecord)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(landslideRecord.getDisasterID());
+                    landslideRecord.setLocation(cm.getLocation_name());
+                    landslideRecord.setDisasterID(cm.getKind_name());
                     result = landslideRecordService.insert(landslideRecord);
                 } catch (Exception e) {
                     e.printStackTrace();

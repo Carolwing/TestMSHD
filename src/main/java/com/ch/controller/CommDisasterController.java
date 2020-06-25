@@ -36,6 +36,9 @@ public class CommDisasterController {
             if (check(commDisaster)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(commDisaster.getDisasterID());
+                    commDisaster.setLocation(cm.getLocation_name());
+                    commDisaster.setDisasterID(cm.getKind_name());
                     result = commDisasterService.insert(commDisaster);
                 } catch (Exception e) {
                     System.out.println(e.getStackTrace());

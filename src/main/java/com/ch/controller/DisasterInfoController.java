@@ -35,6 +35,9 @@ public class DisasterInfoController {
             if (check(disasterInfo)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(disasterInfo.getDisasterID());
+                    disasterInfo.setLocation(cm.getLocation_name());
+                    disasterInfo.setDisasterID(cm.getKind_name());
                     result = disasterInfoService.insert(disasterInfo);
                 } catch (Exception e) {
                     e.printStackTrace();

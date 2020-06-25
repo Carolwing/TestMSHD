@@ -35,6 +35,9 @@ public class CivilStructureController {
             if (check(civilStructure)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(civilStructure.getDisasterID());
+                    civilStructure.setLocation(cm.getLocation_name());
+                    civilStructure.setDisasterID(cm.getKind_name());
                     result = civilStructureService.insert(civilStructure);
                 } catch (Exception e) {
                     System.out.println(e.getStackTrace());

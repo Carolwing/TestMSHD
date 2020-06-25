@@ -37,6 +37,9 @@ public class MasonryStructureController {
             if (check(masonryStructure)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(masonryStructure.getDisasterID());
+                    masonryStructure.setLocation(cm.getLocation_name());
+                    masonryStructure.setDisasterID(cm.getKind_name());
                     result = masonryStructureService.insert(masonryStructure);
                 } catch (Exception e) {
                     System.out.println(e.getStackTrace());

@@ -38,6 +38,9 @@ public class TrafficDisasterController {
             if (check(trafficDisaster)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(trafficDisaster.getDisasterID());
+                    trafficDisaster.setLocation(cm.getLocation_name());
+                    trafficDisaster.setDisasterID(cm.getKind_name());
                     result = trafficDisasterService.insert(trafficDisaster);
                 } catch (Exception e) {
                     System.out.println(e.getStackTrace());

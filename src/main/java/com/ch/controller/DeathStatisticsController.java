@@ -38,6 +38,9 @@ public class DeathStatisticsController {
             if (check(deathStatistics)) {
                 int result = 0;
                 try {
+                    Resolving cm = new Resolving(deathStatistics.getDisasterID());
+                    deathStatistics.setLocation(cm.getLocation_name());
+                    deathStatistics.setDisasterID(cm.getKind_name());
                     result = deathStatisticsService.insert(deathStatistics);
                 } catch (Exception e) {
                     System.out.println(e.getStackTrace());

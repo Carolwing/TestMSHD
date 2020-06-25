@@ -17,9 +17,9 @@ public class CollapseRecord {
 
     private String reportingUnit;
 
-    private byte[] picture=null;
+    private String picture=null;
 
-    public CollapseRecord(Integer idCollapseRecord, String id, String disasterDate, String location, String disasterType, String status, String note, String reportingUnit, byte[] picture) {
+    public CollapseRecord(Integer idCollapseRecord, String id, String disasterDate, String location, String disasterType, String status, String note, String reportingUnit, String picture) {
         this.idCollapseRecord = idCollapseRecord;
         this.disasterID = id;
         this.disasterDate = disasterDate;
@@ -97,11 +97,11 @@ public class CollapseRecord {
         this.reportingUnit = reportingUnit == null ? null : reportingUnit.trim();
     }
 
-    public byte[] getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(byte[] picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 }
