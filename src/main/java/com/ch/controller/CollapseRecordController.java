@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/collapserecord")
 public class CollapseRecordController {
@@ -35,9 +39,47 @@ public class CollapseRecordController {
             if (check(collapseRecord)) {
                 int result = 0;
                 try {
+                    Change locationCode = new Change(collapseRecord.getLocation());
+                    String location = locationCode.getCode();
+                    String kind = "441";
+                    String sequence="";
+                    File _file = new File("441.txt");
+                    InputStream in = null;
+
+                    if (_file.isFile() && _file.exists()) { //判断文件是否存在
+                        byte[] tempbytes = new byte[1024];
+                        int byteread = 0;
+                        in = new FileInputStream(_file);
+                        int num = in.read();
+                        sequence=String.valueOf(num+1);
+                        if (sequence.length()==1) {
+                            sequence = "00" + sequence;
+                        }else if (sequence.length()==2) {
+                            sequence = "0" + sequence;
+                        }
+                        in.close();
+                    }
+                    else {
+                        sequence="000";
+                    }
+
+                    OutputStream out =new FileOutputStream(_file);
+                    out.write(Integer.parseInt(sequence));
+                    out.close();
+
+                    String state;
+                    Map<String,Integer> stateMap=new HashMap<>();
+                    stateMap.put("特大",1);
+                    stateMap.put("重大",2);
+                    stateMap.put("较大",3);
+                    stateMap.put("一般",4);
+                    state=String.valueOf(stateMap.get(collapseRecord.getStatus()));
+
+                    collapseRecord.setDisasterID(location+kind+sequence+state);
+
                     Resolving cm = new Resolving(collapseRecord.getDisasterID());
-                    if (!cm.getLocation_name().equals(""))
-                        collapseRecord.setLocation(cm.getLocation_name());
+//                    if (!cm.getLocation_name().equals(""))
+//                        collapseRecord.setLocation(cm.getLocation_name());
                     collapseRecord.setNote(cm.getKind_name());
                     result = collapseRecordService.insert(collapseRecord);
                 } catch (Exception e) {
