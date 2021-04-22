@@ -28,7 +28,7 @@
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
-      <version>3.2.8</version>
+      <version>3.5.6</version>
     </dependency>
     <dependency>
       <groupId>org.mybatis</groupId>
@@ -287,7 +287,7 @@
       <dependency>
           <groupId>org.mybatis</groupId>
           <artifactId>mybatis</artifactId>
-          <version>3.4.0</version>
+          <version>3.5.6</version>
       </dependency>
     <dependency>
       <groupId>org.apache.poi</groupId>
